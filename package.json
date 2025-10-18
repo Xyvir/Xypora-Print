@@ -1,0 +1,26 @@
+{
+  "name": "logseq-xypora-print-theme",
+  "version": "1.0.0",
+  "description": "A print-friendly, academic, paper-like theme for Logseq, inspired by Typora.",
+  "main": "xypora-print.css",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "logseq",
+    "logseq-theme"
+  ],
+  "author": "Xyvir",
+  "license": "MIT",
+  "logseq": {
+    "themes": [
+      {
+        "name": "Xypora Print",
+        "url": "./xypora-print.css",
+        "description": "A print-friendly, dual-mode academic theme with styles for both light and dark modes.",
+        "mode": "both"
+      }
+    ],
+    "icon": "./icon.png"
+  }
+}
