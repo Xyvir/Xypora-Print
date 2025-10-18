@@ -2,7 +2,7 @@
 
 A print-friendly, academic, and paper-like theme for Logseq, inspired by the clean aesthetic of Typora. This theme is designed with a dual-mode approach, offering a unique experience for both light and dark modes.
 
-(sample.png)[./sample.png]
+![Xypora Print Theme Screenshot](./sample.png)
 
 ## Features
 
@@ -47,3 +47,4 @@ This theme is designed to work seamlessly with the logseq-pdf-export plugin. For
 
 
 Developed by **Xyvir**.
+
