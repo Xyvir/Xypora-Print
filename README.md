@@ -2,6 +2,8 @@
 
 A print-friendly, academic, and paper-like theme for Logseq, inspired by the clean aesthetic of Typora. This theme is designed with a dual-mode approach, offering a unique experience for both light and dark modes.
 
+(sample.png)[./sample.png]
+
 ## Features
 
 ### 1. Distraction-Free Light Mode
@@ -42,5 +44,6 @@ This theme is designed to work seamlessly with the logseq-pdf-export plugin. For
 > **Note:** The PDF Print plugin can be slow, especially with large pages. Please be patient and **wait 2-3 minutes** after pressing "print" to allow the pdf to be fully written; otherwise it will appear as 0 bytes.
 
 ## Credits
+
 
 Developed by **Xyvir**.
