@@ -13,22 +13,27 @@ The light mode is crafted to be a clean, paper-like writing and reading environm
 * **Minimal UI**: Light-mode Intentionally hides UI elements like the page hierarchy, page title, and block breadcrumbs to reduce clutter.
 * **Quick Restore**: Need the UI elements back? Simply switch to dark mode with the `t t` shortcut to instantly restore the standard interface.
 
-### 2. Dark Mode Image Filter
+### 2. Seamless Page Embeds
+
+When in **Document Mode** (`t d`), embedded pages blend directly into the main document, removing the default indentation and secondary-color styling. This creates a flat, continuous text flow, ideal for composing long-form documents from disprate pages.
+
+### 3. Dark Mode Image Filter
 
 To reduce eye strain during late-night sessions, the dark mode applies a subtle, warm orange filter over images. This helps to cut down on blue light, making for a more comfortable viewing experience, especially when looking at bright white figures or diagrams.
 
-### 3. Print-Friendly Page Breaks
+### 4. Print-Friendly Page Breaks
 
 * **Insert Page Breaks**: When you're preparing a document for printing, you can insert a page break by simply creating a block with a horizontal rule (`---`). When printed, this will force the content that follows to start on a new page.
 * **Page Break Visualization**: The theme now includes estimated pagebreak visualizations, (outside of document mode) allowing you to see and plan your page breaks intelligently before printing.
 
-### 4. Elegant Excalidraw Printing
+### 5. Elegant Excalidraw Printing
 
 Embedded Excalidraw diagrams now print elegantly, with their user interface elements automatically hidden in the final export.
 
-### 5. Figure Captions
+### 6. Figure Captions
 
 `h6` headings are now styled to serve as clean, professional-looking captions for your figures and images.
+`#`#`#`#`#`# Figure 1: A diagram
 
 ## Installation
 
@@ -56,3 +61,4 @@ This theme is designed to work seamlessly with the logseq-pdf-export plugin. For
 ## Credits
 
 Developed by **Xyvir**.
+
