@@ -33,7 +33,7 @@ Embedded Excalidraw diagrams now print elegantly, with their user interface elem
 ### 6. Figure Captions
 
 `h6` headings are now styled to serve as clean, professional-looking captions for your figures and images.
-`#`#`#`#`#`# Figure 1: A diagram
+`###### Figure 1: A diagram`
 
 ## Installation
 
@@ -61,4 +61,5 @@ This theme is designed to work seamlessly with the logseq-pdf-export plugin. For
 ## Credits
 
 Developed by **Xyvir**.
+
 
