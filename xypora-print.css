@@ -2,9 +2,10 @@
 ================================================================
    Xypora Print Theme for Logseq
 ================================================================
-  - An academic, paper-like theme for Logseq, inspired by Typora.
+  - An academic, sane-priting, paper-like theme for Logseq, inspired by Typora.
   - By Xyvir
 */
+
 
 @import url('https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap');
 
@@ -13,9 +14,23 @@
   --font-body: 'Vollkorn', 'Georgia', serif;
   --font-header: 'Source Sans 3', sans-serif;
   --font-code: 'IBM Plex Mono', monospace;
+
+  /* --- Page Break Visualization --- */
+  /* Approx. US Letter height by trial an error */
+  --page-break-height: 1440px; 
+  --page-break-line-color: #a6b1c9; /* A neutral blue */
 }
 
-/* === Light-Mode Palette === */
+/* --- Excalidraw Elements --- */
+.draw-wrap {
+  border: 1px solid var(--color-text-main);
+  display: block;       /* Treat the container as a block */
+  margin: 0 auto;       /* Apply auto side margins to center it */
+  position: relative;   /* For consistency, in case of future overlays/absolute positioning */
+  width: fit-content;   /* Allow the container to shrink to its content's width */
+}
+
+/* === Light-Mode Palette  === */
 .light-theme, .white-theme, html[data-theme=light] {
   --color-text-main: #333;
   --color-code-text: #343a40;
@@ -28,11 +43,16 @@
   --ls-font-size: 19px;
   line-height: 1.4;
   
-  /* --- PERSONAL PREFERENCES --- */
+  /* --- Minimized UI --- */
   .page-hierarchy { display: none; }
   .page-title { display: none; }
   /* Hide breadcrumbs when drilled into a block */
   .breadcrumb.block-parents { display: none; }
+  /* Hide references section */
+  .references { display: none; }
+  /* Hide embed headers */
+  .embed-header { display: none; }
+
 
   --ls-primary-background-color: #fefefe;
   --ls-secondary-background-color: #f7f7f7;
@@ -107,6 +127,7 @@
 #main-content-container:not(.is-wide) .page.relative {
   max-width: 960px;
   margin: 0 auto;
+  position: relative;
 }
 
 /* Add top padding to the content area */
@@ -119,6 +140,52 @@
   text-align: justify;
 }
 
+/*
+================================================================
+  NEW: Page Break Visualization
+================================================================
+*/
+
+/* 1. Initial page break line from the top */
+/* Target only the main content area, not references */
+/* Only apply to .page-blocks-inner that does NOT contain a .document-mode element */
+/* Also, do not apply inside #journals */
+#main-content-container:not(:has(#journals)) .page-blocks-inner:not(:has(.document-mode)) {
+  position: relative;
+}
+
+#main-content-container:not(:has(#journals)) .page-blocks-inner:not(:has(.document-mode))::before {
+  content: '';
+  position: absolute;
+  top: var(--page-break-height);
+  left: 0;
+  right: 0;
+  border-top: 2px dashed var(--page-break-line-color);
+  z-index: 100;
+  /* Shift the hue of the line to differentiate it from manual breaks */
+  filter: hue-rotate(120deg);
+}
+
+/* 2. Page break lines after manual breaks (---) */
+.block-body:has(> hr:only-child) {
+  position: relative;
+}
+
+.block-body:has(> hr:only-child)::after {
+  content: '';
+  position: absolute;
+  top: var(--page-break-height);
+  left: 0;
+  right: 0;
+  border-top: 2px dashed var(--page-break-line-color);
+  z-index: 100;
+}
+
+/* Hide indicators in doc-mode */
+/* The static indicator is now handled by the :not(:has()) selector above */
+.doc-mode .block-body:has(> hr:only-child)::after {
+  display: none;
+}
 
 
 /* --- HEADERS (Unified for Rendered & Editor view) --- */
@@ -139,7 +206,27 @@
 .ls-block .heading-1, h1 { font-size: 2.0em; margin-top: 1.2em; }
 .ls-block .heading-2, h2 { font-size: 1.8em; }
 .ls-block .heading-3, h3 { font-size: 1.5em; font-style: italic; }
-.ls-block .heading-4, h4 { font-size: 1.2em; }
+
+
+
+/* Style H4 and H5 with a simple underline and align left */
+.ls-block .heading-4, h4,
+.ls-block .heading-5, h5 {
+  
+  text-align: left !important;
+  font-size: 1em !important;
+  font-weight: 700 !important;
+  text-decoration: underline !important;
+  text-decoration-color: var(--ls-border-color);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em; /* Adjust space between text and line */
+}
+
+.ls-block .heading-5, h5 {
+  font-size: 1.05em !important;
+  font-weight: 400 !important;
+  text-indent: .75em;
+}
 
 /* Page Title: Override global header centering */
 h1.page-title {
@@ -216,6 +303,25 @@ blockquote {
   width: fit-content;   /* <-- This is the crucial missing piece! */
 }
 
+/* --- H6 as Image Caption --- */
+/* Overrides the default h6 style to be used as an image caption. */
+.ls-block .heading-6, h6 {
+  position: relative; /* Allow positioning relative to its normal place */
+  font-family: 'Times New Roman', Times, serif !important;
+  font-weight: 400 !important; /* Thinnest weight. */
+  font-size: 1em !important;
+  top: -2.2em !important; /* Use 'top' to pull the element up, avoiding clipping issues. */
+  /* margin-bottom: .5em !important; Space after caption */
+  padding: 0 !important;
+  text-align: center;
+  color: var(--color-text-main);
+}
+
+/* Ensure the underline from H2 doesn't appear on H6 captions */
+.ls-block .heading-6::after, h6::after {
+  display: none !important;
+}
+
 /*
 ============================================================
   AGGRESSIVE RESET FOR A PURE WHITE BACKGROUND
@@ -232,13 +338,66 @@ html[data-theme=light] #main-content-container {
 
 /*
 ============================================================
+  DOCUMENT MODE TWEAKS
+============================================================
+*/
+
+/* Make embedded pages blend in with the parent document */
+.doc-mode .embed-page {
+  background-color: var(--ls-primary-background-color) !important;
+  padding: 0 !important;
+}
+
+/* Hide the border around Excalidraw blocks */
+.doc-mode .draw-wrap {
+  border: none;
+}
+
+/* --- Hide Excalidraw UI in Document Mode --- */
+
+/* Make Excalidraw non-interactive */
+.doc-mode .draw {
+  pointer-events: none;
+}
+
+/* --- Hide Excalidraw UI in Document Mode --- */
+
+/* .my-1 spacer div above the drawing */
+/* #block-content-.... > div > div > span > div > div > div.my-1 */
+.doc-mode .my-1 {
+  display: none;
+}
+
+/* Top-left menu button */
+/* #block-content-... > div > div > span > div > div > div.draw-wrap > div > div.layer-ui__wrapper > div > div > div.Stack.Stack_vertical.App-menu_top__left > div > button */
+.doc-mode .draw-wrap .App-menu_top__left {
+  display: none;
+}
+
+/* Bottom-left zoom controls */
+/* #block-content-... > div > div > span > div > div > div.draw-wrap > div > div.layer-ui__wrapper > footer > div.layer-ui__wrapper__footer-left... > div > section > div.Stack.Stack_vertical.zoom-actions > div */
+.doc-mode .draw-wrap .zoom-actions {
+  display: none;
+}
+
+.doc-mode .draw-wrap .layer-ui__wrapper > button {
+  display: none;
+}
+
+/* Top-right menu (e.g., "Open in Excalidraw" or similar) */
+/* #block-content-68f79673-d999-41bc-816a-f6b614d959fc > div > div > span > div > div > div.draw-wrap > div > div.layer-ui__wrapper > div > div > section > div > div > div > div > div.Stack.Stack_horizontal */
+.doc-mode .draw-wrap .layer-ui__wrapper .Stack_horizontal {
+  display: none;
+}
+/*
+============================================================
   PRINT-SPECIFIC STYLES
 ============================================================
 */
 @media print {
   /* Turns any horizontal rule (---) into a manual page break. */
   hr {
-    page-break-after: always;
+    page-break-before: always;
     visibility: hidden;
   }
 
@@ -250,4 +409,20 @@ html[data-theme=light] #main-content-container {
     page-break-after: avoid;
     page-break-inside: avoid;
   }
+
+     /* Hides elements that might add extra space at the end; prevents trailing blank pages */
+  .ls-block:last-child {
+    page-break-after: auto !important;
+    page-break-before: auto !Important;
+  }
+
+
+  .page-journal-footer {
+    display: none !important;
+  }
+  
+  .pb-24 {
+    padding-bottom: 0rem !important;
+  }
+  
 }
