@@ -307,11 +307,19 @@ blockquote {
 /* Overrides the default h6 style to be used as an image caption. */
 .ls-block .heading-6, h6 {
   position: relative; /* Allow positioning relative to its normal place */
-  font-family: 'Times New Roman', Times, serif !important;
-  font-weight: 400 !important; /* Thinnest weight. */
-  font-size: 1em !important;
-  top: -2.2em !important; /* Use 'top' to pull the element up, avoiding clipping issues. */
-  /* margin-bottom: .5em !important; Space after caption */
+
+  /* --- New Arvo Small-Caps Style --- */
+  font-family: var(--figure-font-family), serif !important; /* Uses Arvo variable */
+  font-weight: 700 !important;          /* Arvo's Bold (700) weight */
+  font-variant: small-caps;            /* The small-caps effect */
+  letter-spacing: 0.05em;              /* Readability for caps */
+  text-transform: lowercase;           /* Ensures all letters become small-caps, not full-caps */
+  
+  /* --- Sizing & Positioning --- */
+  /* I've kept 1em, but captions are usually smaller (e.g., 0.9em) */
+  font-size: 1em !important; 
+  
+  top: -2.2em !important; /* Use 'top' to pull the element up */
   padding: 0 !important;
   text-align: center;
   color: var(--color-text-main);
@@ -401,6 +409,10 @@ html[data-theme=light] #main-content-container {
     visibility: hidden;
   }
 
+   body {
+    zoom: 70%;
+  }
+
   /* Rule for H1: Flexible for long content */
   h1 { page-break-after: avoid; }
 
@@ -426,3 +438,4 @@ html[data-theme=light] #main-content-container {
   }
   
 }
+
