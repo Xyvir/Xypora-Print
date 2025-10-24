@@ -13,12 +13,19 @@
   "author": "Xyvir",
   "license": "MIT",
   "logseq": {
+    "id": "logseq-xypora-print-theme",
     "themes": [
       {
-        "name": "Xypora Print",
+        "name": "Xypora Print - Light",
         "url": "./xypora-print.css",
-        "description": "A print-friendly, dual-mode academic theme with styles for both light and dark modes.",
-        "mode": "both"
+        "description": "Light mode of the print-friendly academic theme.",
+        "mode": "light"
+      },
+      {
+        "name": "Xypora Print - Dark",
+        "url": "./xypora-print.css",
+        "description": "Dark mode of the print-friendly academic theme.",
+        "mode": "dark"
       }
     ],
     "icon": "./icon.png"
