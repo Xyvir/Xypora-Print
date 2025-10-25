@@ -59,9 +59,12 @@ This theme is designed to work seamlessly with the logseq-pdf-export plugin. For
 
 > **Note:** The PDF Print plugin can be slow, especially with large pages. Please be patient and **wait 2-3 minutes** after pressing "print" to allow the pdf to be fully written; otherwise it will appear as 0 bytes.
 
+**Known Issue & Call for Help:** A common bug with Logseq's PDF export plugins is the generation of trailing blank pages. This appears to be an upstream issue that cannot be corrected by the theme's CSS. If you are a developer with a CSS-based solution or the ability to help improve the export plugins directly, your contributions would be greatly valued by the community.
+
 ## Credits
 
 Developed by **Xyvir**.
+
 
 
 
