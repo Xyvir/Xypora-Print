@@ -407,10 +407,6 @@ html[data-theme=light] #main-content-container {
     visibility: hidden;
   }
 
-   body {
-    zoom: 70%;
-  }
-
   /* Rule for H1: Flexible for long content */
   h1 { page-break-after: avoid; }
 
@@ -436,5 +432,6 @@ html[data-theme=light] #main-content-container {
   }
   
 }
+
 
 
