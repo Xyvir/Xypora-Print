@@ -7,8 +7,7 @@
 */
 
 
-@import url('https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:ital,wght@1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:ital,wght@1,300&family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+3:ital,wght@0,400..900;1,400..900&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap');
 
 /* === Global Font & Style Definitions === */
 :root {
@@ -18,7 +17,7 @@
 
   /* --- Page Break Visualization --- */
   /* Approx. US Letter height by trial an error */
-  --page-break-height: 1440px; 
+  --page-break-height: 1360px; 
   --page-break-line-color: #a6b1c9; /* A neutral blue */
 }
 
@@ -316,8 +315,8 @@ blockquote {
   letter-spacing: 0.05em;      /* Good for readability */
 
   /* --- Sizing & Positioning --- */
-  font-size: 1.1em !important; /* Kept from last version */
-  top: -2em !important;       /* Kept from last version */
+  font-size: .9em !important; /* Kept from last version */
+  top: -2.2em !important;       /* Kept from last version */
   padding: 0 !important;
   text-align: center;
   color: var(--color-text-main);
