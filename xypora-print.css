@@ -197,15 +197,15 @@
   font-weight: 700;
   text-align: center;
   color: var(--color-text-main);
-  margin-top: 2em;
-  margin-bottom: 0.5em;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
   padding-bottom: 0 !important;
   border-bottom: none !important; /* Use !important to override Logseq defaults */
 }
 
-.ls-block .heading-1, h1 { font-size: 2.0em; margin-top: 1.2em; }
-.ls-block .heading-2, h2 { font-size: 1.8em; }
-.ls-block .heading-3, h3 { font-size: 1.5em; font-style: italic; }
+.ls-block .heading-1, h1 { font-size: 2.0rem; margin-top: 1.2rem; }
+.ls-block .heading-2, h2 { font-size: 1.8rem; }
+.ls-block .heading-3, h3 { font-size: 1.5rem; font-style: italic; }
 
 
 
@@ -214,12 +214,12 @@
 .ls-block .heading-5, h5 {
   
   text-align: left !important;
-  font-size: 1em !important;
+  font-size: 1rem !important;
   font-weight: 700 !important;
   text-decoration: underline !important;
   text-decoration-color: var(--ls-border-color);
   text-decoration-thickness: 1px;
-  text-underline-offset: 0.2em; /* Adjust space between text and line */
+  text-underline-offset: 0.2rem; /* Adjust space between text and line */
 }
 
 .ls-block .heading-5, h5 {
@@ -231,11 +231,11 @@
 /* Page Title: Override global header centering */
 h1.page-title {
   text-align: left !important;
-  margin-bottom: 1.5em; /* Add some space below the title */
+  margin-bottom: 1.5rem; /* Add some space below the title */
   text-decoration: underline;
   text-decoration-color: var(--ls-border-color); /* Use theme's border color */
   text-decoration-thickness: 2px;
-  text-underline-offset: 0.3em; /* Adjust space between text and line */
+  text-underline-offset: 0.3rem; /* Adjust space between text and line */
 }
 
 /* Re-create the distinctive H2 underline */
@@ -257,8 +257,8 @@ h1.page-title {
 /* --- OTHER ELEMENTS --- */
 /* Style blockquotes */
 blockquote {
-  margin-left: 1em;
-  padding-left: 1em;
+  margin-left: 1rem;
+  padding-left: 1rem;
   border-left: 1px solid var(--ls-border-color);
 }
 
@@ -267,9 +267,9 @@ blockquote {
   font-family: var(--font-code);
   background-color: var(--color-code-bg);
   color: var(--color-code-text);
-  padding: 0.1em 0.3em;
+  padding: 0.1rem 0.3rem;
   border-radius: 3px;
-  font-size: 0.9em;
+  font-size: 0.9rem;
 }
 
 /* Style code editor blocks (fenced code) */
@@ -277,14 +277,14 @@ blockquote {
   font-family: var(--font-code) !important;
   background-color: var(--color-code-bg) !important;
   line-height: 1.5;
-  padding: 1em;
+  padding: 1rem;
   border-radius: 4px;
   border: 1px solid var(--ls-border-color);
 }
 
 /* Style tables */
 .table-auto {
-  margin-bottom: 1.5em;
+  margin-bottom: 1.5rem;
 }
 .table-auto th,
 .table-auto td {
@@ -312,11 +312,11 @@ blockquote {
   font-family: 'Alegreya Sans SC', sans-serif !important;
   font-weight: 700 !important;  /* Light weight */
   font-style: italic !important;  /* Italic style */
-  letter-spacing: 0.05em;      /* Good for readability */
+  letter-spacing: 0.05rem;      /* Good for readability */
 
   /* --- Sizing & Positioning --- */
-  font-size: .9em !important; /* Kept from last version */
-  top: -2.2em !important;       /* Kept from last version */
+  font-size: .9rem !important; /* Kept from last version */
+  top: -2.2rem !important;       /* Kept from last version */
   padding: 0 !important;
   text-align: center;
   color: var(--color-text-main);
@@ -414,6 +414,16 @@ html[data-theme=light] #main-content-container {
     page-break-after: avoid;
     page-break-inside: avoid;
   }
+  /* Hide page break indicators when printing */
+  #main-content-container:not(:has(#journals)) .page-blocks-inner:not(:has(.document-mode))::before {
+    display: none !important;
+  }
+
+  .block-body:has(> hr:only-child)::after {
+    display: none !important;
+  }
+
+
 
      /* Hides elements that might add extra space at the end; prevents trailing blank pages */
   .ls-block:last-child {
@@ -429,8 +439,20 @@ html[data-theme=light] #main-content-container {
   .pb-24 {
     padding-bottom: 0rem !important;
   }
-  
+
+  .pb-24::after {
+    
+    /* This creates the 'dummy' element */
+    content: ""; 
+    
+    /* Make it a block-level element */
+    display: block; 
+    
+    /* This is the key: force the width you want */
+    width: 1000px !important; 
+    
+    /* Make it invisible  opacity: 0; */
+    height: 1px;
+   
+  }
 }
-
-
-
